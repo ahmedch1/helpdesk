@@ -49,7 +49,10 @@ function helpdesk_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'helpdesk' ),
+			'menu-editor-admin' => esc_html__( 'Primary', 'helpdesk' ),
+            'menu-logged-in'=> esc_html__( 'Menu Logged In', 'helpdesk' ),
+            'not-logged-in-normal-user'=> esc_html__( 'Menu Not Logged In', 'helpdesk' ),
+
 		)
 	);
 
@@ -139,6 +142,7 @@ add_action( 'widgets_init', 'helpdesk_widgets_init' );
  */
 function helpdesk_scripts() {
 	wp_enqueue_style( 'helpdesk-style', get_stylesheet_uri(), array(), _S_VERSION );
+    wp_enqueue_style('customcss',get_template_directory_uri() . '/css/custom.css' );
 	wp_style_add_data( 'helpdesk-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'helpdesk-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );

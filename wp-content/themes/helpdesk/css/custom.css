@@ -1,0 +1,45 @@
+/* Header */
+.custom-logo{
+    width: 150px;
+}
+.site-description{
+        font-style: italic;
+}
+.main-navigation ul li {
+    margin-right: 20px;
+}
+
+#site-navigation{
+    display: inline-flex;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: #fff;
+    padding: 0 20px;
+    border-radius: 40px;
+    box-shadow: 0 10px 40px rgba(159, 162, 177, .8);
+}
+#site-navigation ul li a {
+    color: #83818c;
+    padding: 20px;
+    text-decoration: none;
+    transition: .3s;
+    margin: 0 6px;
+    z-index: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    position: relative;
+
+}
+#site-navigation ul li a:not(.is-active):hover:before {
+    opacity: 1;
+    bottom: 0;
+
+}
+#site-navigation ul li a:not(.is-active):hover { color: #333; }
+
+.menu-toggle{
+    background: transparent;
+    border: none;
+}
+/* Header */
