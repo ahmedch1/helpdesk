@@ -31,11 +31,9 @@
 			the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<?php
 			else :
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 				<?php
 			endif;
 			$helpdesk_description = get_bloginfo( 'description', 'display' );
@@ -46,14 +44,31 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'helpdesk' ); ?></button>
+
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
+            if(is_user_logged_in()){
+                if(!current_user_can('edit_posts')) {
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'menu-logged-in',
+                        )
+                    );
+                }else{
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'menu-editor-admin',
+                        )
+                    );
+                }
+            }else{
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'not-logged-in-normal-user',
+                    )
+                );
+            }
+
 			?>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'helpdesk' ); ?></button>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
